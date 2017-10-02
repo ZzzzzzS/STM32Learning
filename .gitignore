@@ -1,3 +1,6 @@
+#Github忽略文件,可以删除
+#详情:http://blog.csdn.net/u014733374/article/details/47036083
+
 # Prerequisites
 *.d
 
@@ -50,3 +53,28 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+#keil files
+*.bak
+*.ddk
+*.edk
+*.lst
+*.lnp
+*.mpf
+*.mpj
+*.omf
+*.plg
+*.rpt
+*.tmp
+*.__i
+*.crf
+*.o
+*.d
+*.axf
+*.tra
+*.dep
+*.iex
+*.htm
+*.sct
+*.map
+
