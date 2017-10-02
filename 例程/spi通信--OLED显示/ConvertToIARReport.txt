@@ -1,0 +1,14 @@
+This file:
+D:\m1899\Documents\IAR Embedded Workbench\arm\OLED\ConvertToIARReport.txt
+
+Project file conversion(s)
+------------------------------------
+
+D:\m1899\Documents\IAR Embedded Workbench\arm\OLED\STM32_empty_project.uvprojx
+____________________________________________________________________________________________________
+Project converted to => D:\m1899\Documents\IAR Embedded Workbench\arm\OLED\STM32_empty_project.ewp
+Workspace created => D:\m1899\Documents\IAR Embedded Workbench\arm\OLED\STM32_empty_project.eww
+____________________________________________________________________________________________________
+
+Source code substitutions
+-----------------------------------
