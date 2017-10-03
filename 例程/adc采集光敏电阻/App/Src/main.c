@@ -9,9 +9,26 @@
 *************************功能说明********************************/
 
 #include "stm32f10x.h"
-
+#include "adc.h"
+#include "module_74hc595.h"
 
 void main()
 {
-	//这是一个空白工程,在这里开始你的创作吧!
+	uint16_t x,i,temp;
+	hc595_init();
+	NTC_CDS_Init();
+	while(1)
+	{
+		x=GetNTC();
+		i=0;
+
+	while(x/10!=0)
+		{
+			temp=x%10;
+			DisplayScan((7-i),data_table[temp]);
+			x=x/10;
+			i++;
+		}
+		DisplayScan(7-i,data_table[x]);
+	}
 }
