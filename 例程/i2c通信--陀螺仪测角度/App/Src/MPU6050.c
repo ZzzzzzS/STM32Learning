@@ -4,31 +4,31 @@
 
 void delay_IIC( int ms );
 
-//³õÊ¼»¯GPIOºÍ6050
+//åˆå§‹åŒ–GPIOå’Œ6050
 void Sys_Configuration(void)
 {
 	IIC_GPIO_Configuration( IIC_GOIO_SDA , IIC_SDA , IIC_GPIO_SCL , IIC_SCL );
 	MPU6050_Inital();
 }
 
-//6050³õÊ¼»¯³ÌĞò
+//6050åˆå§‹åŒ–ç¨‹åº
 void MPU6050_Inital(void)
 {
 	delay_IIC( 100 );
-	//½â³ıĞİÃß
+	//è§£é™¤ä¼‘çœ 
 	Single_Write_IIC( SLAVEADRESS , PWR_MGMT_1 , 0x00 );
-	//ÉèÖÃÒ»Ğ©¼Ä´æÆ÷²ÎÊı£¬¿ÉÒÔ²éÔÄÍ·ÎÄ¼şÖĞºê¶¨Òå
+	//è®¾ç½®ä¸€äº›å¯„å­˜å™¨å‚æ•°ï¼Œå¯ä»¥æŸ¥é˜…å¤´æ–‡ä»¶ä¸­å®å®šä¹‰
 	Single_Write_IIC( SLAVEADRESS , SMPLRT_DIV , 0x07 );
 	Single_Write_IIC( SLAVEADRESS , CONFIG , 0x06 );
 	Single_Write_IIC( SLAVEADRESS , GYRO_CONFIG , 0x18 );
 	Single_Write_IIC( SLAVEADRESS , ACCEL_CONFIG , 0x01 );
-	//±ØĞëÔÙ´Î½â³ıĞİÃß
+	//å¿…é¡»å†æ¬¡è§£é™¤ä¼‘çœ 
 	Single_Write_IIC( SLAVEADRESS,PWR_MGMT_1,0x00);
 	delay_IIC( 100 );
 }
 
 
-//»ñÈ¡XÖá¼ÓËÙ¶È·ÖÁ¿
+//è·å–Xè½´åŠ é€Ÿåº¦åˆ†é‡
 int getAccX(void)
 {
 	int AccX = 0;
@@ -42,7 +42,7 @@ int getAccX(void)
 	return AccX;
 }
 
-//»ñÈ¡YÖá¼ÓËÙ¶È·ÖÁ¿
+//è·å–Yè½´åŠ é€Ÿåº¦åˆ†é‡
 int getAccY(void)
 {
 	int AccY = 0;
@@ -56,7 +56,7 @@ int getAccY(void)
 	return AccY;
 }
 
-//»ñÈ¡ZÖá¼ÓËÙ¶È·ÖÁ¿
+//è·å–Zè½´åŠ é€Ÿåº¦åˆ†é‡
 int getAccZ(void)
 {
 	int AccZ = 0;
@@ -70,7 +70,7 @@ int getAccZ(void)
 	return AccZ;
 }
 
-//»ñµÃXÖá½ÇËÙ¶È·ÖÁ¿
+//è·å¾—Xè½´è§’é€Ÿåº¦åˆ†é‡
 int getGyroX(void)
 {
 	int GyroX = 0;
@@ -83,7 +83,7 @@ int getGyroX(void)
 	
 	return GyroX;	
 }
-//»ñÈ¡YÖá½ÇËÙ¶È·ÖÁ¿
+//è·å–Yè½´è§’é€Ÿåº¦åˆ†é‡
 int getGyroY(void)
 {
    	int GyroY = 0;
@@ -96,7 +96,7 @@ int getGyroY(void)
 	
 	return GyroY;	
 }
-//»ñÈ¡ZÖá½ÇËÙ¶È·ÖÁ¿
+//è·å–Zè½´è§’é€Ÿåº¦åˆ†é‡
 int getGyroZ(void)
 {
    	int GyroZ = 0;
@@ -110,10 +110,10 @@ int getGyroZ(void)
 	return GyroZ;	
 }
 
-//»ñÈ¡ÎÂ¶ÈÔ­Ê¼Öµ
-unsigned int getTemperature(void)
+//è·å–æ¸©åº¦åŸå§‹å€¼
+int getTemperature(void)
 {
- 	unsigned int temperature = 0;
+ 	int temperature = 0;
 	char temperatureH = 0 , temperatureL = 0;
 
 	temperatureH = Single_Read_IIC( SLAVEADRESS , TEMP_OUT_H );
@@ -124,7 +124,7 @@ unsigned int getTemperature(void)
 	return temperature;
 }
 
-//IICÍ¨ĞÅÖĞµÄÓĞĞ§ÑÓÊ±
+//IICé€šä¿¡ä¸­çš„æœ‰æ•ˆå»¶æ—¶
 void delay_IIC( int ms )
 {
 	int i,j;
