@@ -1,9 +1,9 @@
 # powered by 718 innovation lab
 
-Hi~ ¹ş¹¤´óÍşº£718Áª´´ÅàÑµÓªµÄĞ¡»ï°éÃÇ´ó¼ÒºÃ,ÄãÃÇ½øĞĞ**stm32**µ¥Æ¬»úÅàÑµµÄÏà¹Ø×ÊÁÏ¶¼·ÅÔÚÕâÀïÁË,°üÀ¨ÍêÕûµÄ**Ê¾Àı³ÌĞò,°ïÖúÎÄµµ,¿Î¼ş,** ÒÔ¼°µ¥Æ¬»úµÄ **Ó²¼ş×ÊÁÏ,Ô­ÀíÍ¼** µÈµÈ[µã»÷ÕâÀï](https://codeload.github.com/ZzzzzzS/STM32Learing/zip/master) ÏÂÔØÏà¹ØµÄ×ÊÁÏ°ü°É,´Ë×ÊÁÏ°ü»á²»¶¨ÆÚ¸üĞÂ,ÊµÊ±±£³Ö×îĞÂ°æ.
+Hi~ å“ˆå·¥å¤§å¨æµ·718è”åˆ›åŸ¹è®­è¥çš„å°ä¼™ä¼´ä»¬å¤§å®¶å¥½,ä½ ä»¬è¿›è¡Œ**stm32**å•ç‰‡æœºåŸ¹è®­çš„ç›¸å…³èµ„æ–™éƒ½æ”¾åœ¨è¿™é‡Œäº†,åŒ…æ‹¬å®Œæ•´çš„**ç¤ºä¾‹ç¨‹åº,å¸®åŠ©æ–‡æ¡£,è¯¾ä»¶,** ä»¥åŠå•ç‰‡æœºçš„ **ç¡¬ä»¶èµ„æ–™,åŸç†å›¾** ç­‰ç­‰[ç‚¹å‡»è¿™é‡Œ](https://codeload.github.com/ZzzzzzS/STM32Learing/zip/master) ä¸‹è½½ç›¸å…³çš„èµ„æ–™åŒ…å§,æ­¤èµ„æ–™åŒ…ä¼šä¸å®šæœŸæ›´æ–°,å®æ—¶ä¿æŒæœ€æ–°ç‰ˆ.
 
 ***
-# ÒÔÏÂÎª²âÊÔÄÚÈİ
+# ä»¥ä¸‹ä¸ºæµ‹è¯•å†…å®¹
 
 ### Markdown
 
@@ -35,4 +35,4 @@ Your Pages site will use the layout and styles from the Jekyll theme you have se
 
 ### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and weâ€™ll help you sort it out.
+Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and weéˆ¥æª’l help you sort it out.
