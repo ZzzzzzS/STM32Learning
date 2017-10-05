@@ -1,8 +1,9 @@
-## Welcome to GitHub Pages
+# powered by 718 innovation lab
 
-You can use the [editor on GitHub](https://github.com/ZzzzzzS/STM32Learing/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Hi~ 哈工大威海718联创培训营的小伙伴们大家好,你们进行**stm32**单片机培训的相关资料都放在这里了,包括完整的**示例程序,帮助文档,课件,** 以及单片机的 **硬件资料,原理图** 等等[点击这里](https://codeload.github.com/ZzzzzzS/STM32Learing/zip/master) 下载相关的资料包吧,此资料包会不定期更新,实时保持最新版.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+***
+# 以下为测试内容
 
 ### Markdown
 
