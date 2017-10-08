@@ -17,20 +17,20 @@ void Key_Init()
 	NVIC_InitTypeDef NVIC_InitStructure;													//中断优先级配置结构体
 	GPIO_InitTypeDef GPIO_InitStructure;													//gpio控制结构体
 	//使能用到的GPIO的时钟
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD,ENABLE);					//GPIOA
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB,ENABLE);					//GPIOB
 	
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15;                    //管脚3
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12;                    //管脚12
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;									//GPIO设置为上拉输入
   //传入配置信息结构体，初始化管脚
-  GPIO_Init(GPIOD,&GPIO_InitStructure);
+  GPIO_Init(GPIOB,&GPIO_InitStructure);
 	
 	
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);   						//优先级分配2:2
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO,ENABLE);          //使能管脚复用时钟
-	GPIO_EXTILineConfig(GPIO_PortSourceGPIOD,GPIO_PinSource15);  //将中断和GPIO连接
+	GPIO_EXTILineConfig(GPIO_PortSourceGPIOB,GPIO_PinSource12);  //将中断和GPIO连接
 	
 	//中断线和中断初始化配置
-	EXTI_InitStructure.EXTI_Line = EXTI_Line15;										//因为引脚是GPIO15，使用15号中断线
+	EXTI_InitStructure.EXTI_Line = EXTI_Line12;										//因为引脚是GPIO15，使用15号中断线
 	EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;						//配置模式为中断
 	EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;				//下降沿触发中断
 	EXTI_InitStructure.EXTI_LineCmd = ENABLE;											//使能中断配置
@@ -44,7 +44,7 @@ void Key_Init()
 	NVIC_Init(&NVIC_InitStructure);																//传入配置信息，初始化
 }
 
-void main()
+int main()
 {
 	LED_Init();																										//初始化led灯
 	Key_Init();																										//初始化按键
@@ -67,11 +67,11 @@ void delay()					//延时
 
 void EXTI15_10_IRQHandler ()			//外部中断
 {
-	if(EXTI_GetITStatus(EXTI_Line15) != RESET)	//判断是不是15触发了中断
+	if(EXTI_GetITStatus(EXTI_Line12) != RESET)	//判断是不是12触发了中断
 	{
 		
 		LEDPower(LED1,Power_OFF);									//关灯
 		delay();
-		EXTI_ClearITPendingBit(EXTI_Line15);			//清除中断标志位
+		EXTI_ClearITPendingBit(EXTI_Line12);			//清除中断标志位
 	}
 }
