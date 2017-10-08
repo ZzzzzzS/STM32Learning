@@ -10,8 +10,8 @@
 #include "stm32f10x.h"
 #include "stm32f10x_adc.h"
 
-extern void NTCInit();//热敏电阻初始化
-extern void CDSInit();//光敏电阻初始化
+extern void NTCInit(void);//热敏电阻初始化
+extern void CDSInit(void);//光敏电阻初始化
 
 
 

@@ -9,10 +9,10 @@
 *************************************************************/
 #include "include.h"
 /*********按键相关管脚******/
-#define KEY_GPIO_CLK   RCC_APB2Periph_GPIOD			
-#define KEY_GPIO_PORT 	GPIOD
-#define KEY1_GPIO_PIN	GPIO_Pin_14
-#define KEY2_GPIO_PIN	GPIO_Pin_15
+#define KEY_GPIO_CLK   RCC_APB2Periph_GPIOB			
+#define KEY_GPIO_PORT 	GPIOB
+#define KEY1_GPIO_PIN	GPIO_Pin_12
+#define KEY2_GPIO_PIN	GPIO_Pin_13
 
 
 #define LED_GPIO_PORT GPIOC

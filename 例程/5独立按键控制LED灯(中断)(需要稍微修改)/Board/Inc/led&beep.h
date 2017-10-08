@@ -6,12 +6,13 @@
 ******************************************************************/
 
 
-#ifndef __LED&BEEP_H__
-#define __LED&BEEP_H__
+#ifndef __LED_BEEP_H__
+#define __LED_BEEP_H__
 
 #include "stm32f10x.h"
 #include "stm32f10x_gpio.h"
 
+void LED_Init(void);
 typedef enum  //枚举定义灯的序号
 {
 	LED1,
@@ -29,9 +30,9 @@ typedef enum
 }PowerState;
 
 
-extern void LEDInit();
+extern void LEDInit(void);
 extern void LEDPower(LEDNumber Number,PowerState State);
-extern void BeepInit();
+extern void BeepInit(void);
 extern void BeepPower(PowerState State);
 
 #endif

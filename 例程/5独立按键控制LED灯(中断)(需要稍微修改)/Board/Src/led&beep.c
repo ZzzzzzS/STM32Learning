@@ -12,7 +12,7 @@
 作用:初始化所有led灯
 ==========================================*/
 
-void LED_Init()					//led初始化									
+void LED_Init(void)					//led初始化									
 {
  
  GPIO_InitTypeDef  GPIO_InitStructure;

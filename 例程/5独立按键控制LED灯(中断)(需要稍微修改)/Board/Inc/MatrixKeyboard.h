@@ -5,8 +5,8 @@
 *		 建议大家多看看数据手册。     
 ******************************************************************/
 
-#ifndef __Matrix&Keyboard_H__
-#define __Matrix&Keyboard_H__
+#ifndef __Matrix_Keyboard_H__
+#define __Matrix_Keyboard_H__
 
 #include "stm32f10x.h"
 #include "stm32f10x_gpio.h"
