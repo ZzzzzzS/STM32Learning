@@ -7,7 +7,9 @@
 *									建议大家多查阅数据手册，多在新生群和大家交流。
 
 *************************************************************/
-#include "include.h"
+#include "stm32f10x.h"
+#include "stm32f10x_gpio.h"
+#include "systick.h"
 /*********按键相关管脚******/
 #define KEY_GPIO_CLK   RCC_APB2Periph_GPIOB			
 #define KEY_GPIO_PORT 	GPIOB
@@ -22,7 +24,6 @@
 #define LED3_GPIO_PIN GPIO_Pin_8
 #define LED4_GPIO_PIN GPIO_Pin_9
 
-void Delay_ms(u16 time);			//延时
 void Key_gpio_init(void);					//key初始化
 void Led_init(void);//LED初始化
 void Led_on(void);	//LED开
@@ -55,21 +56,7 @@ int main() {
   };
   
 }
-/*
-函数名： Delay_ms(u16 time)
-作用： 		延时
-参数：    u16 time
-返回：		void
-说明：		粗略延时 不准确 其中的i等参数大致随意给定 
-					不必过于纠结
-*/
-void Delay_ms(u16 time) {        
-  u16 i=0;      
-  while(time--){       
-	i=12000;        
-	while(i--);      
-  } 
-}
+
 /*
 函数名： void Key_gpio_init(void)
 作用： 		按键GPIO初始化

@@ -27,7 +27,7 @@ void Delay1s()//硬延时函数
 	} while (--i);
 }
 
-void main()
+int main()
 {
 	int i;
 	hc595_init();				//数码管初始化

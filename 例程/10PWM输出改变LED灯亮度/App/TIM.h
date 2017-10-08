@@ -1,5 +1,5 @@
-#ifndef __TIM_H
-#define __TIM_H
+#ifndef __TIM_H__
+#define __TIM_H__
 
 
 /************通用定时器TIM参数定义，只限TIM2、3、4、5************/

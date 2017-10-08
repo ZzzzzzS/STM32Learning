@@ -1,6 +1,17 @@
-/**********************718创新实验室开发板例程*********************
-*  编写：718创新实验室
-*  平台：STM32F103VET6
-*  说明：由于作者的水平有限，若有不足之处，还请大家谅解。
-*		 建议大家多看看数据手册。     
-******************************************************************/
+#include "stm32f10x.h"
+#include "stm32f10x_rtc.h"
+
+typedef struct
+{
+	vu8 hour;
+	vu8 min;
+	vu8 sec;			
+	vu16 w_year;
+	vu8  w_month;
+	vu8  w_date;
+	
+}RTCDate;
+
+
+extern void RTCInit(void);
+extern RTCDate RTC_Get(void);

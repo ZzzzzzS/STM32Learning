@@ -12,7 +12,7 @@
 #include "module_74hc595.h"
 #include "MatrixKeyboard.h"	
 
-void main()
+int main()
 {int a;
 	KeyInit();
 	hc595_init();

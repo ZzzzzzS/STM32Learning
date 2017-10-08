@@ -13,5 +13,5 @@ typedef struct
 }RTCDate;
 
 
-extern void RTCInit();
+extern void RTCInit(void);
 extern RTCDate RTC_Get(void);

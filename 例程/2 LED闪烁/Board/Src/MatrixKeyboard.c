@@ -1,9 +1,3 @@
-/**********************718创新实验室开发板例程*********************
-*  编写：718创新实验室
-*  平台：STM32F103VET6
-*  说明：由于作者的水平有限，若有不足之处，还请大家谅解。
-*		 建议大家多看看数据手册。     
-******************************************************************/
 #include "MatrixKeyboard.h"
 
 void KeyInit(void)
@@ -36,7 +30,7 @@ char KeyClicked(void)
 
 	GPIO_SetBits(GPIOD,GPIO_Pin_8); // 高
 	GPIO_ResetBits(GPIOD,GPIO_Pin_9);   //低
-	GPIO_SetBits(GPIOB,GPIO_Pin_14|GPIO_Pin_15);
+	GPIO_ResetBits(GPIOB,GPIO_Pin_14|GPIO_Pin_15);
 	if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13)==0)
 	{ 
 	  if(GPIO_ReadOutputDataBit(GPIOD, GPIO_Pin_13)==0)//确定按键被按下
@@ -61,7 +55,7 @@ char KeyClicked(void)
 	}
 	/*****操作第二列按键******/
 	GPIO_ResetBits(GPIOB,GPIO_Pin_15);            // 设置为低电平
-	GPIO_SetBits(GPIOD,GPIO_Pin_9|GPIO_Pin_8);    // 设置为高电平
+	GPIO_ResetBits(GPIOD,GPIO_Pin_9|GPIO_Pin_8);    // 设置为高电平
 	GPIO_SetBits(GPIOB,GPIO_Pin_14);               // 设置为高电平
 	if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13)==0)
 	{
@@ -86,8 +80,9 @@ char KeyClicked(void)
 
 	/******操作第三列按键******/
 	GPIO_ResetBits(GPIOD,GPIO_Pin_8);            // 设置为低电平
-	GPIO_SetBits(GPIOD,GPIO_Pin_9);               // 设置为高电平
-	GPIO_SetBits(GPIOB,GPIO_Pin_14|GPIO_Pin_15);       // 设置为高电平
+	GPIO_ResetBits(GPIOD,GPIO_Pin_9);               // 设置为高电平
+	GPIO_SetBits(GPIOB,GPIO_Pin_14);       // 设置为高电平
+	GPIO_ResetBits(GPIOB,GPIO_Pin_14);            // 设置为低电平
 	if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13)==0)
 	{
 	  if(GPIO_ReadOutputDataBit(GPIOD, GPIO_Pin_13)==0)//确定按键被按下
@@ -111,8 +106,9 @@ char KeyClicked(void)
 		
    /*****操作第四列按键*****/
 	GPIO_ResetBits(GPIOD,GPIO_Pin_9); //设置为低电平
-	GPIO_SetBits(GPIOD,GPIO_Pin_8);   //设置为高电平
-	GPIO_SetBits(GPIOB,GPIO_Pin_14|GPIO_Pin_15);//设置为高电平
+	GPIO_ResetBits(GPIOD,GPIO_Pin_8);   //设置为高电平
+	GPIO_SetBits(GPIOB,GPIO_Pin_14);//设置为高电平
+	GPIO_ResetBits(GPIOD,GPIO_Pin_15);   //设置为高电平
 	if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13)==0)
 	{
 	  if(GPIO_ReadOutputDataBit(GPIOD, GPIO_Pin_13)==0)//确定按键被按下

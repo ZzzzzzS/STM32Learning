@@ -11,7 +11,7 @@
 #include "stm32f10x.h"
 
 
-void main()
+int main()
 {
 	//这是一个空白工程,在这里开始你的创作吧!
 }

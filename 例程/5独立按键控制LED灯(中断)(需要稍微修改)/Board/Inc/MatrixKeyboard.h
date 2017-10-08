@@ -16,3 +16,4 @@ void KeyInit(void);	//声明矩阵键盘初始化函数
 char KeyClicked(void); //声明被按下的按钮,如果没有被按下的就返回0
 
 #endif
+

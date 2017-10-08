@@ -12,7 +12,7 @@
 #include "module_74hc595.h"
 
 
-void main()
+int main()
 {
 	hc595_init();				//数码管初始化
 	

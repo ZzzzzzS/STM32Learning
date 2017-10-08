@@ -22,9 +22,8 @@ void DELAY()							//采用for循环硬延时
 	}
 }
 
-void main()
+int main()
 {
-
 	LED_Init();										//led初始化
 
 	while(1)
