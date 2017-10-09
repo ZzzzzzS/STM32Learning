@@ -1,113 +1,114 @@
 #include "MatrixKeyboard.h"
 
 void KeyInit(void) {
-  GPIO_InitTypeDef GPIO_InitStructure;                   //¶¨Òå½á¹¹Ìå±äÁ¿
-  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE);  //´ò¿ªÏàÓ¦µÄÊ±ÖÓ
+  GPIO_InitTypeDef GPIO_InitStructure;                   //å®šä¹‰ç»“æ„ä½“å˜é‡
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE);  //æ‰“å¼€ç›¸åº”çš„æ—¶é’Ÿ
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
 
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_14 | GPIO_Pin_15;  //Ñ¡ÔñÄãÒªÉèÖÃµÄIO¿Ú
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;          //ÍÆÍìÊä³ö
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  //ÉèÖÃ´«ÊäËÙÂÊ
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_14 | GPIO_Pin_15;  //é€‰æ‹©ä½ è¦è®¾ç½®çš„IOå£
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;          //æ¨æŒ½è¾“å‡º
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  //è®¾ç½®ä¼ è¾“é€Ÿç‡
   GPIO_Init(GPIOB, &GPIO_InitStructure);
 
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8 | GPIO_Pin_9;  //Ñ¡ÔñÄãÒªÉèÖÃµÄIO¿Ú
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;        //ÍÆÍìÊä³ö
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  //ÉèÖÃ´«ÊäËÙÂÊ
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8 | GPIO_Pin_9;  //é€‰æ‹©ä½ è¦è®¾ç½®çš„IOå£
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;        //æ¨æŒ½è¾“å‡º
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  //è®¾ç½®ä¼ è¾“é€Ÿç‡
   GPIO_Init(GPIOD, &GPIO_InitStructure);
 
   GPIO_InitStructure.GPIO_Pin =
       GPIO_Pin_10 | GPIO_Pin_11 | GPIO_Pin_12 | GPIO_Pin_13;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;  //ÊäÈë
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;  //è¾“å…¥
   GPIO_Init(GPIOD, &GPIO_InitStructure);
 }
 
 char KeyClicked(void) {
   char key = 0;
 
-  /*****²Ù×÷µÚÒ»ÁĞ°´¼ü******/
-  GPIO_SetBits(GPIOB, GPIO_Pin_14);                // ÉèÖÃÎª¸ßµçÆ½
-  GPIO_ResetBits(GPIOB, GPIO_Pin_15);              // ÉèÖÃÎªµÍµçÆ½
-  GPIO_ResetBits(GPIOD, GPIO_Pin_9 | GPIO_Pin_8);  // ÉèÖÃÎªµÍµçÆ½
+  /*****æ“ä½œç¬¬ä¸€åˆ—æŒ‰é”®******/
+  GPIO_SetBits(GPIOB, GPIO_Pin_14);                // è®¾ç½®ä¸ºé«˜ç”µå¹³
+  GPIO_ResetBits(GPIOB, GPIO_Pin_15);              // è®¾ç½®ä¸ºä½ç”µå¹³
+  GPIO_ResetBits(GPIOD, GPIO_Pin_9 | GPIO_Pin_8);  // è®¾ç½®ä¸ºä½ç”µå¹³
   if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13) == 1) {
-    Delay_ms(10);                                        //°´¼üÏû¶¶
-    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13) == 1)  //È·¶¨°´¼ü±»°´ÏÂ
+    Delay_ms(10);                                        //æŒ‰é”®æ¶ˆæŠ–
+    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13) == 1)  //ç¡®å®šæŒ‰é”®è¢«æŒ‰ä¸‹
       key = 11;
   } else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_12) == 1) {
-    Delay_ms(10);                                        //°´¼üÏû¶¶
-    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_12) == 1)  //È·¶¨°´¼ü±»°´ÏÂ
+    Delay_ms(10);                                        //æŒ‰é”®æ¶ˆæŠ–
+
+if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_12) == 1)  //ç¡®å®šæŒ‰é”®è¢«æŒ‰ä¸‹
       key = 21;
   } else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_11) == 1) {
-    Delay_ms(10);                                        //°´¼üÏû¶¶
-    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_11) == 1)  //È·¶¨°´¼ü±»°´ÏÂ
+    Delay_ms(10);                                        //æŒ‰é”®æ¶ˆæŠ–
+    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_11) == 1)  //ç¡®å®šæŒ‰é”®è¢«æŒ‰ä¸‹
       key = 31;
   } else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_10) == 1) {
-    Delay_ms(10);                                        //°´¼üÏû¶¶
-    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_10) == 1)  //È·¶¨°´¼ü±»°´ÏÂ
+    Delay_ms(10);                                        //æŒ‰é”®æ¶ˆæŠ–
+    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_10) == 1)  //ç¡®å®šæŒ‰é”®è¢«æŒ‰ä¸‹
       key = 41;
   }
 
-  /******²Ù×÷µÚ¶şÁĞ°´¼ü******/
-  GPIO_SetBits(GPIOB, GPIO_Pin_15);                // ÉèÖÃÎª¸ßµçÆ½
-  GPIO_ResetBits(GPIOD, GPIO_Pin_8 | GPIO_Pin_9);  // ÉèÖÃÎªµÍµçÆ½
-  GPIO_ResetBits(GPIOB, GPIO_Pin_14);              // ÉèÖÃÎªµÍµçÆ½
+  /******æ“ä½œç¬¬äºŒåˆ—æŒ‰é”®******/
+  GPIO_SetBits(GPIOB, GPIO_Pin_15);                // è®¾ç½®ä¸ºé«˜ç”µå¹³
+  GPIO_ResetBits(GPIOD, GPIO_Pin_8 | GPIO_Pin_9);  // è®¾ç½®ä¸ºä½ç”µå¹³
+  GPIO_ResetBits(GPIOB, GPIO_Pin_14);              // è®¾ç½®ä¸ºä½ç”µå¹³
   if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13) == 1) {
-    Delay_ms(10);                                        //°´¼üÏû¶¶
-    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13) == 1)  //È·¶¨°´¼ü±»°´ÏÂ
+    Delay_ms(10);                                        //æŒ‰é”®æ¶ˆæŠ–
+    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13) == 1)  //ç¡®å®šæŒ‰é”®è¢«æŒ‰ä¸‹
       key = 12;
   } else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_12) == 1) {
-    Delay_ms(10);                                        //°´¼üÏû¶¶
-    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_12) == 1)  //È·¶¨°´¼ü±»°´ÏÂ
+    Delay_ms(10);                                        //æŒ‰é”®æ¶ˆæŠ–
+    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_12) == 1)  //ç¡®å®šæŒ‰é”®è¢«æŒ‰ä¸‹
       key = 22;
   } else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_11) == 1) {
-    Delay_ms(10);                                        //°´¼üÏû¶¶
-    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_11) == 1)  //È·¶¨°´¼ü±»°´ÏÂ
+    Delay_ms(10);                                        //æŒ‰é”®æ¶ˆæŠ–
+    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_11) == 1)  //ç¡®å®šæŒ‰é”®è¢«æŒ‰ä¸‹
       key = 32;
   } else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_10) == 1) {
-    Delay_ms(10);                                        //°´¼üÏû¶¶
-    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_10) == 1)  //È·¶¨°´¼ü±»°´ÏÂ
+    Delay_ms(10);                                        //æŒ‰é”®æ¶ˆæŠ–
+    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_10) == 1)  //ç¡®å®šæŒ‰é”®è¢«æŒ‰ä¸‹
       key = 42;
   }
-  /******²Ù×÷µÚÈıÁĞ°´¼ü*******/
+  /******æ“ä½œç¬¬ä¸‰åˆ—æŒ‰é”®*******/
 
-  GPIO_SetBits(GPIOD, GPIO_Pin_8);    // ¸ß
-  GPIO_ResetBits(GPIOD, GPIO_Pin_9);  //µÍ
+  GPIO_SetBits(GPIOD, GPIO_Pin_8);    // é«˜
+  GPIO_ResetBits(GPIOD, GPIO_Pin_9);  //ä½
   GPIO_ResetBits(GPIOB, GPIO_Pin_14 | GPIO_Pin_15);
   if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13) == 1) {
-    Delay_ms(10);  //°´¼üÏû¶¶                                  //°´¼üÏû¶¶
-    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13) == 1)  //È·¶¨°´¼ü±»°´ÏÂ
+    Delay_ms(10);  //æŒ‰é”®æ¶ˆæŠ–                                  //æŒ‰é”®æ¶ˆæŠ–
+    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13) == 1)  //ç¡®å®šæŒ‰é”®è¢«æŒ‰ä¸‹
       key = 13;
   } else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_12) == 1) {
-    Delay_ms(10);                                        //°´¼üÏû¶¶
-    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_12) == 1)  //È·¶¨°´¼ü±»°´ÏÂ
+    Delay_ms(10);                                        //æŒ‰é”®æ¶ˆæŠ–
+    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_12) == 1)  //ç¡®å®šæŒ‰é”®è¢«æŒ‰ä¸‹
       key = 23;
   } else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_11) == 1) {
-    Delay_ms(10);                                        //°´¼üÏû¶¶
-    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_11) == 1)  //È·¶¨°´¼ü±»°´ÏÂ
+    Delay_ms(10);                                        //æŒ‰é”®æ¶ˆæŠ–
+    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_11) == 1)  //ç¡®å®šæŒ‰é”®è¢«æŒ‰ä¸‹
       key = 33;
   } else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_10) == 1) {
-    Delay_ms(10);                                        //°´¼üÏû¶¶
-    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_10) == 1)  //È·¶¨°´¼ü±»°´ÏÂ
+    Delay_ms(10);                                        //æŒ‰é”®æ¶ˆæŠ–
+    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_10) == 1)  //ç¡®å®šæŒ‰é”®è¢«æŒ‰ä¸‹
       key = 43;
   }
-  /*****²Ù×÷µÚËÄÁĞ°´¼ü*****/
-  GPIO_SetBits(GPIOD, GPIO_Pin_9);                   //ÉèÖÃÎª¸ßµçÆ½
-  GPIO_ResetBits(GPIOD, GPIO_Pin_8);                 //ÉèÖÃÎªµÍµçÆ½
-  GPIO_ResetBits(GPIOB, GPIO_Pin_14 | GPIO_Pin_15);  //ÉèÖÃÎªµÍµçÆ½
+  /*****æ“ä½œç¬¬å››åˆ—æŒ‰é”®*****/
+  GPIO_SetBits(GPIOD, GPIO_Pin_9);                   //è®¾ç½®ä¸ºé«˜ç”µå¹³
+  GPIO_ResetBits(GPIOD, GPIO_Pin_8);                 //è®¾ç½®ä¸ºä½ç”µå¹³
+  GPIO_ResetBits(GPIOB, GPIO_Pin_14 | GPIO_Pin_15);  //è®¾ç½®ä¸ºä½ç”µå¹³
   if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13) == 1) {
-    Delay_ms(10);  //°´¼üÏû¶¶                                   //°´¼üÏû¶¶
-    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13) == 1)  //È·¶¨°´¼ü±»°´ÏÂ
+    Delay_ms(10);  //æŒ‰é”®æ¶ˆæŠ–                                   //æŒ‰é”®æ¶ˆæŠ–
+    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13) == 1)  //ç¡®å®šæŒ‰é”®è¢«æŒ‰ä¸‹
       key = 14;
   } else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_12) == 1) {
-    Delay_ms(10);                                        //°´¼üÏû¶¶
-    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_12) == 1)  //È·¶¨°´¼ü±»°´ÏÂ
+    Delay_ms(10);                                        //æŒ‰é”®æ¶ˆæŠ–
+    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_12) == 1)  //ç¡®å®šæŒ‰é”®è¢«æŒ‰ä¸‹
       key = 24;
   } else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_11) == 1) {
-    Delay_ms(10);                                        //°´¼üÏû¶¶
-    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_11) == 1)  //È·¶¨°´¼ü±»°´ÏÂ
+    Delay_ms(10);                                        //æŒ‰é”®æ¶ˆæŠ–
+    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_11) == 1)  //ç¡®å®šæŒ‰é”®è¢«æŒ‰ä¸‹
       key = 34;
   } else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_10) == 1) {
-    Delay_ms(10);                                        //°´¼üÏû¶¶
-    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_10) == 1)  //È·¶¨°´¼ü±»°´ÏÂ
+    Delay_ms(10);                                        //æŒ‰é”®æ¶ˆæŠ–
+    if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_10) == 1)  //ç¡®å®šæŒ‰é”®è¢«æŒ‰ä¸‹
       key = 44;
   }
 
