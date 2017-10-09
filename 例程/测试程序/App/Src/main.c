@@ -9,6 +9,7 @@
 #include "MPU6050.h"
 #include "iic.h"
 #include "module_74hc595.h"
+#include "math.h"
 
 void tim_init(void);
 void showSomethings(int data);
@@ -19,6 +20,7 @@ void bee_init(void);
 void bee_on(void);
 void bee_off(void);
 void pwm_init(void);
+float angle_cal(void);
 
 unsigned int time=0;
 unsigned int time_led=0;
@@ -94,11 +96,11 @@ void  TIM6_IRQHandler (void)
 	{
 		if(time>200)
 		{
-			angle=getAccY()/16384;
+			angle=(int)angle_cal();
 			time=0;
 			//All color led
-			TIM_SetCompare2(TIM2,7119-angle>4000? 7119-angle:4000);
-			TIM_SetCompare3(TIM2,4000+angle<7119? 4000+angle:7119);
+			TIM_SetCompare2(TIM2,6000);
+			TIM_SetCompare3(TIM2,0);
 			TIM_SetCompare4(TIM2,0);
 		}
 		else
@@ -246,3 +248,14 @@ void pwm_init(void)
 	TIM_Cmd(TIM2, ENABLE);
 }
 
+float angle_cal(void)
+{
+	float x,y,z,temp;
+	x=((float)getAccX())/16384;
+	y=((float)getAccY())/16384;
+	z=((float)getAccZ())/16384;
+	temp=sqrt(x*x+y*y)/z;
+	temp=atan(temp);
+	
+	return temp*180/3.14;
+}

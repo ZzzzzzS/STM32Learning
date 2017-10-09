@@ -1,8 +1,9 @@
 /*************************718开发板例程**********************
 *   编写：718创新实验室
 *		平台：STM32F103VET6科创培训开发板
-*		说明：该例程使用官方库进行编写，由于作者的水平有限， 
-*								若有不足之处， 还请大家见谅
+*		说明：该例程使用官方库进行编写，由于作者的水平有限，
+*								若有不足之处，
+*还请大家见谅
 *									建议大家多查阅数据手册，多在新生群和大家交流。
 *************************************************************/
 
@@ -21,40 +22,28 @@ module_74hc595.c
 #include "iic.h"
 #include "module_74hc595.h"
 
-void main()
-{
-	unsigned int i=0,temp=0,counter=0;
-	int x=0,xBefore;
-  //初始化6050和IIC设置
-	Sys_Configuration();
-	//初始化6050
-	hc595_init();
-	while(1)
-	{
-		//读取X角速度
-		if(counter==255)
-		{
-			xBefore=getGyroX();
-			counter=0;
-		}
-		x=xBefore;
-		counter++;	
-		i=0;
-		//依次显示每个位
-		while(x/10!=0)
-		{
-			temp=x%10;
-			DisplayScan((7-i),data_table[temp]);
-			x=x/10;
-			i++;
-		}
-		DisplayScan(7-i,data_table[x]);
-	}
+void showSomethings(int data) {
+  int i = 0;
+  int temp;
+  //??????????????
+  if (data < 0)
+    data = -data;
+  while (data / 10 != 0) {
+    temp = data % 10;
+    DisplayScan((7 - i++), data_table[temp]);
+    data = data / 10;
+  }
+  DisplayScan(7 - i, data_table[data]);
 }
 
-
-
-
-
-
-
+void main() {
+  int temp;
+  //初始化6050和IIC设置
+  Sys_Configuration();
+  //初始化6050
+  hc595_init();
+  while (1) {
+    temp = getTemperature();
+    showSomethings(temp);
+  }
+}
