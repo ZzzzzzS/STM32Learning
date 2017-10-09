@@ -12,7 +12,7 @@
 #include "adc.h"
 #include "module_74hc595.h"
 
-void main()
+int main()
 {
 	uint16_t x,i,temp;
 	hc595_init();

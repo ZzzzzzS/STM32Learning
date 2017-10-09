@@ -6,8 +6,8 @@
 ******************************************************************/
 
 
-#ifndef __LED&BEEP_H__
-#define __LED&BEEP_H__
+#ifndef __LED_BEEP_H__
+#define __LED_BEEP_H__
 
 #include "stm32f10x.h"
 #include "stm32f10x_gpio.h"
@@ -29,9 +29,9 @@ typedef enum
 }PowerState;
 
 
-extern void LEDInit();
+extern void LED_Init(void);
 extern void LEDPower(LEDNumber Number,PowerState State);
-extern void BeepInit();
+extern void BeepInit(void);
 extern void BeepPower(PowerState State);
 
 #endif

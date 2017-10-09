@@ -21,7 +21,7 @@ module_74hc595.c
 #include "iic.h"
 #include "module_74hc595.h"
 
-void main()
+int main()
 {
 	unsigned int i=0,temp=0,counter=0;
 	int x=0,xBefore;

@@ -38,7 +38,7 @@ void RTC_IRQHandler(void)
 *  使用示例:
 *******************************************************************/		
 
-void main()
+int main()
 {
 	RTCInit();					//时钟初始化
 	hc595_init();				//数码管初始化
@@ -53,6 +53,4 @@ void main()
 		DisplayScan(7,data_table[calendar.sec%10]);
 		
 	}
-
-	
 }

@@ -41,9 +41,7 @@ int main() {
 	Usart_SendString( USARTx,"这是一个串口接收发送程序\n");
 	printf("718创新实验室\n\n\n\n");
 		
-while(1){
-	
-}
+while(1);
 
 }
 

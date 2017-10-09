@@ -1,11 +1,18 @@
+/**********************718´´ĞÂÊµÑéÊÒ¿ª·¢°åÀı³Ì*********************
+*  ±àĞ´£º718´´ĞÂÊµÑéÊÒ
+*  Æ½Ì¨£ºSTM32F103VET6
+*  ËµÃ÷£ºÓÉÓÚ×÷ÕßµÄË®Æ½ÓĞÏŞ£¬ÈôÓĞ²»×ãÖ®´¦£¬»¹Çë´ó¼ÒÁÂ½â¡£
+*		 ½¨Òé´ó¼Ò¶à¿´¿´Êı¾İÊÖ²á¡£     
+******************************************************************/
+
 #ifndef _iic_
 #define _iic_
 
 #include "stm32f10x.h"
 
 /*********************************************************************************/
-/*ä¿®æ”¹æ¨¡æ‹ŸIICçš„è¯»å–å¼•è„šä»¥åŠå¼•è„šçš„ç«¯å£å·											 */
-/*è¿™äº›å®å®šä¹‰å®šä¹‰å¥½äº†ä»¥åå¼•è„šåˆå§‹åŒ–å‡½æ•°ä¼šè‡ªè¡Œåˆå§‹åŒ–æ—¶é’Ÿä½¿èƒ½ç­‰å¿…è¦çš„å‚æ•°			 */
+/*ĞŞ¸ÄÄ£ÄâIICµÄ¶ÁÈ¡Òı½ÅÒÔ¼°Òı½ÅµÄ¶Ë¿ÚºÅ											 */
+/*ÕâĞ©ºê¶¨Òå¶¨ÒåºÃÁËÒÔºóÒı½Å³õÊ¼»¯º¯Êı»á×ÔĞĞ³õÊ¼»¯Ê±ÖÓÊ¹ÄÜµÈ±ØÒªµÄ²ÎÊı			 */
 /*********************************************************************************/
 #define IIC_GPIO (GPIOB)
 #define IIC_GOIO_SDA (GPIOB)
@@ -18,11 +25,11 @@
 
 
 /************************************************************************************/
-/*ä½¿ç”¨æ­¤å‡½æ•° åˆå§‹åŒ– æ¨¡æ‹ŸIIC  å…¶ä¸­å‚æ•° åœ¨ä»¥ä¸Šå®å®šä¹‰ä¸­ æœ‰å®šä¹‰ ä½¿ç”¨æ—¶åªéœ€è¦ä¿®æ”¹å®å®šä¹‰å³å¯ */
-/* æ­¤å‡½æ•°è°ƒç”¨æ—¶ è¯·å¤åˆ¶ä»¥ä¸‹ä»£ç  
+/*Ê¹ÓÃ´Ëº¯Êı ³õÊ¼»¯ Ä£ÄâIIC  ÆäÖĞ²ÎÊı ÔÚÒÔÉÏºê¶¨ÒåÖĞ ÓĞ¶¨Òå Ê¹ÓÃÊ±Ö»ĞèÒªĞŞ¸Äºê¶¨Òå¼´¿É */
+/* ´Ëº¯Êıµ÷ÓÃÊ± Çë¸´ÖÆÒÔÏÂ´úÂë 
 	IIC_GPIO_Configuration( IIC_GOIO_SDA , IIC_SDA , IIC_GPIO_SCL , IIC_SCL );  */
 /************************************************************************************/
-//IIC å¼•è„šé…ç½®
+//IIC Òı½ÅÅäÖÃ
 extern void IIC_GPIO_Configuration( GPIO_TypeDef * GPIOx_SDA , uint16_t SDA_Pin , GPIO_TypeDef * GPIOx_SCL , uint16_t SCL_Pin );
 
 
@@ -31,16 +38,17 @@ extern void IIC_GPIO_Configuration( GPIO_TypeDef * GPIOx_SDA , uint16_t SDA_Pin 
 
 
 /*********************************************************************************/
-/*ä½¿ç”¨ä»¥ä¸‹ä»£ç æ—¶è¯·å‹¿ä¿®æ”¹														 */
+/*Ê¹ÓÃÒÔÏÂ´úÂëÊ±ÇëÎğĞŞ¸Ä														 */
 /*																				 */
 /*********************************************************************************/
-//ä½¿ç”¨è½¯ä»¶æ¨¡æ‹ŸI2C
-//é€šè¿‡å®å®šä¹‰ç®€åŒ–IICä¸­é¢‘ç¹çš„IOæ“ä½œçš„ç¼–å†™
+//Ê¹ÓÃÈí¼şÄ£ÄâI2C
+//Í¨¹ıºê¶¨Òå¼ò»¯IICÖĞÆµ·±µÄIO²Ù×÷µÄ±àĞ´
 #define SET_SDA		{ GPIO_SetBits( IIC_GPIO , IIC_SDA ); }
 #define RESET_SDA	{ GPIO_ResetBits( IIC_GPIO , IIC_SDA );}
 #define SET_SCL		{ GPIO_SetBits( IIC_GPIO , IIC_SCL ); }
 #define RESET_SCL 	{ GPIO_ResetBits( IIC_GPIO , IIC_SCL); }
 #define IIC_SDA_STATE (IIC_GPIO->IDR&IIC_SDA)
+#define IIC_SCL_STATE (IIC_GPIO->IDR&IIC_SDA)
 
 #define IIC_DELAY { IIC_Delay(); }
 
@@ -57,27 +65,27 @@ enum IIC_BUS_STATE_ENUM
 	IIC_BUS_ERROR=2
 };
 
-//IIC å»¶æ—¶
+//IIC ÑÓÊ±
 extern void IIC_Delay(void);
-//IIC å¯åŠ¨å‡½æ•°
+//IIC Æô¶¯º¯Êı
 extern u8 IIC_Start(void);
-//IIC åœæ­¢å‡½æ•°
+//IIC Í£Ö¹º¯Êı
 extern void IIC_Stop(void);
-//IIC å‘é€åŠ¨ä½œ
+//IIC ·¢ËÍ¶¯×÷
 extern void IIC_SendACK(void);
-//IIC åœæ­¢åŠ¨ä½œ
+//IIC Í£Ö¹¶¯×÷
 extern void IIC_SendNACK(void);
-//IIC å‘é€å•å­—èŠ‚
+//IIC ·¢ËÍµ¥×Ö½Ú
 extern u8 IIC_SendByte(u8 Data);
-//IIC æ¥æ”¶å•å­—èŠ‚
+//IIC ½ÓÊÕµ¥×Ö½Ú
 extern u8 IIC_RecvByte(void);
-//IIC å†™å…¥å•å­—èŠ‚
+//IIC Ğ´Èëµ¥×Ö½Ú
 extern void Single_Write_IIC(u8 SlaveAddress,u8 REG_Address,u8 REG_data);
-//IIC è¯»å–å•å­—èŠ‚
+//IIC ¶ÁÈ¡µ¥×Ö½Ú
 extern u8 Single_Read_IIC(u8 SlaveAddress, u8 REG_Address);
 
 
-//GPIO è¿‡æ»¤å™¨
+//GPIO ¹ıÂËÆ÷
 extern uint16_t GPIO_Filter( GPIO_TypeDef * GPIOx );
 
 #endif

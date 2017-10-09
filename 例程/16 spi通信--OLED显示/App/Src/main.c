@@ -31,7 +31,7 @@ OLED控制过程:
 int main() 
 {
   OLED_Init();						//OLED初始化
-	OLED_Print(0,0,"WITWH");//OLED显示内容
+	OLED_Print(0,0,"HITWH");//OLED显示内容
 	OLED_Print(0,2,"718InnovationLab");
 	OLED_Print(0,4,"Welcome");
 	OLED_Print(0,6,"Hello World");

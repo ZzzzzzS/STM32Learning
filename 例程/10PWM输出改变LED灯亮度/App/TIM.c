@@ -1,7 +1,7 @@
-
+#include "time.h"
 #include "stm32f10x.h"
 #include "stm32f10x_gpio.h"
-#include "tim.h"
+
 
 static void GENERAL_TIM_GPIO_Config(void) 
 {

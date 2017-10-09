@@ -395,25 +395,62 @@
               <FileType>1</FileType>
               <FilePath>.\App\Src\system_stm32f10x.c</FilePath>
             </File>
-            <File>
-              <FileName>MPU6050.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\App\Src\MPU6050.c</FilePath>
-            </File>
-            <File>
-              <FileName>iic.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\App\Src\iic.c</FilePath>
-            </File>
-            <File>
-              <FileName>module_74hc595.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\App\Src\module_74hc595.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Board</GroupName>
+          <Files>
+            <File>
+              <FileName>tim.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Board\Src\tim.c</FilePath>
+            </File>
+            <File>
+              <FileName>systick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Board\Src\systick.c</FilePath>
+            </File>
+            <File>
+              <FileName>Spi-OLED.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Board\Src\Spi-OLED.c</FilePath>
+            </File>
+            <File>
+              <FileName>rtc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Board\Src\rtc.c</FilePath>
+            </File>
+            <File>
+              <FileName>MPU6050.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Board\Src\MPU6050.c</FilePath>
+            </File>
+            <File>
+              <FileName>module_74hc595.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Board\Src\module_74hc595.c</FilePath>
+            </File>
+            <File>
+              <FileName>MatrixKeyboard.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Board\Src\MatrixKeyboard.c</FilePath>
+            </File>
+            <File>
+              <FileName>led&amp;beep.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Board\Src\led&amp;beep.c</FilePath>
+            </File>
+            <File>
+              <FileName>iic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Board\Src\iic.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Board\Src\adc.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Chip</GroupName>
