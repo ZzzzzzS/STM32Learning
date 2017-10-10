@@ -6,13 +6,32 @@
 
 # 版本更新说明
 ***
+
 暂无更新
+
+
 
 # 资料下载
 ***
  * 下载地址:[**https://codeload.github.com/ZzzzzzS/STM32Learing/zip/master**](https://codeload.github.com/ZzzzzzS/STM32Learing/zip/master)
  * 备用下载地址:[**https://github.com/ZzzzzzS/STM32Learing**](https://github.com/ZzzzzzS/STM32Learing)
     >一般来说直接下载即可,若下载失败可点击备用下载地址,手动选择下载zip包,如图所示  ![下载失败](/image/downloadError.png)
+
+# 资料文件说明
+***
+|文件名|说明|
+|------|----|
+|原理图|硬件资料,说明电路连接情况|
+|例程|各个外设示例程序|
+|课程资料|上课ppt等资料|
+|开始前的准备|软件安装等资料|
+|帮助文档|由718创新实验室编写的例程和外设说明|
+|ST官方资料|由ST意法半导体提供的相关说明|
+
+>其他文件与stm32学习无关,有兴趣可自行研究
+
+
+
 
 # stm32开发板简介
 ***
