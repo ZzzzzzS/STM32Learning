@@ -17,10 +17,10 @@
  * 备用下载地址:[**https://github.com/ZzzzzzS/STM32Learing**](https://github.com/ZzzzzzS/STM32Learing)
     >一般来说直接下载即可,若下载失败可点击备用下载地址,手动选择下载zip包,如图所示  ![下载失败](/image/downloadError.png)
 
-# 资料文件说明
+# 资料说明
 ***
 
-|文件名|说明|
+|文件夹名|说明|
 |------|----|
 |原理图|硬件资料,说明电路连接情况|
 |例程|各个外设示例程序|
