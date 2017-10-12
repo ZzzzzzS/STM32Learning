@@ -35,7 +35,7 @@
 
 # stm32开发板简介
 ***
- ![单片机图片](/image/mcu.jpg)
+ ![单片机图片](/image/mcu.png)
 
 
 
