@@ -11,24 +11,24 @@
 #include <stdio.h>
 
 //宏定义 总线时钟 GPIO时钟 波特率
-#define USART_CLK RCC_APB1Periph_USART3
-#define USART_GPIO_CLK RCC_APB2Periph_GPIOB
+#define USART_CLK RCC_APB2Periph_USART1
+#define USART_GPIO_CLK RCC_APB2Periph_GPIOA
 #define USART_BAUDRATE 115200
-#define USARTx USART3
-#define USARTx_APBxClkCmd RCC_APB1PeriphClockCmd
+#define USARTx USART1
+#define USARTx_APBxClkCmd RCC_APB2PeriphClockCmd
 
 //USART GPIO管脚宏定义
-#define USART_TX_GPIO_PORT GPIOB
-#define USART_TX_GPIO_PIN GPIO_Pin_10
-#define USART_RX_GPIO_PORT GPIOB
-#define USART_RX_GPIO_PIN GPIO_Pin_11
+#define USART_TX_GPIO_PORT GPIOA
+#define USART_TX_GPIO_PIN GPIO_Pin_9
+#define USART_RX_GPIO_PORT GPIOA
+#define USART_RX_GPIO_PIN GPIO_Pin_10
 
 void USART_Config(void);
 void NVIC_Configuration(void);
 void Usart_SendByte( USART_TypeDef * pUSARTx, uint8_t ch);
 void Usart_SendString( USART_TypeDef * pUSARTx, char *str);
 void Usart_SendHalfWord( USART_TypeDef * pUSARTx, uint16_t ch);
-void USART3_IRQHandler(void); 
+void USART1_IRQHandler(void); 
 
 int main() {
 	
@@ -41,7 +41,9 @@ int main() {
 	Usart_SendString( USARTx,"这是一个串口接收发送程序\n");
 	printf("718创新实验室\n\n\n\n");
 		
-while(1);
+while(1){
+	
+}
 
 }
 
@@ -109,7 +111,7 @@ void NVIC_Configuration(void)
   NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
   
   /* 配置USART为中断源 */
-  NVIC_InitStructure.NVIC_IRQChannel = USART3_IRQn;
+  NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;
   /* 抢断优先级*/
   NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
   /* 子优先级 */
@@ -239,7 +241,7 @@ int fgetc(FILE *f)
 					如果外界有多个中断请求源 各个中断源均会引起USART3_IRQ中断  所以需要在中断内部判断具体为哪一中断请求源引起的中断
 					详细详细可见技术手册
 */
-void USART3_IRQHandler(void){
+void USART1_IRQHandler(void){
 	uint8_t ucTemp;
 	if(USART_GetITStatus(USARTx,USART_IT_RXNE)!=RESET)		//确认为接收寄存器空中断
 	{		

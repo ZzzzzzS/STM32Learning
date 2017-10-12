@@ -80,13 +80,13 @@ int main(void)
 		for(a=0;a<=10;a++)//改变PWM值控制灯的亮度
 		{
 		TIM_SetCompare4(TIM8,a);	
-			delayms(10);
+			delayms(50);
 			
 		}
 		for(;a>=0;a--)
 		{
 		TIM_SetCompare4(TIM8,a);	
-			delayms(10);
+			delayms(50);
 		}
 	//	GPIO_ResetBits(LED1_GPIO_PORT, LED1_GPIO_PIN);//R
 		//GPIO_ResetBits(LED2_GPIO_PORT, LED2_GPIO_PIN);//G

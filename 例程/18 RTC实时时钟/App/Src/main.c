@@ -11,6 +11,7 @@
 #include "stm32f10x.h"
 #include "module_74hc595.h"
 #include "rtc.h"
+#include "systick.h"
 
 RTCDate calendar;  //RTCDate结构体,用于保存时间数据
 
@@ -40,6 +41,9 @@ void RTC_IRQHandler(void)
 
 int main()
 {
+	
+	
+	
 	RTCInit();					//时钟初始化
 	hc595_init();				//数码管初始化
 	

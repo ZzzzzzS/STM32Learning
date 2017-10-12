@@ -38,10 +38,10 @@ int main()
 	button_init();
 	bee_init();
 	pwm_init();
-	
 	while(1)
 	{
 		showSomethings(angle);
+		
 		
 		if(GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_12)==0)
 		{
@@ -97,9 +97,9 @@ void  TIM6_IRQHandler (void)
 			angle=getAccY()/16384;
 			time=0;
 			//All color led
-			TIM_SetCompare2(TIM2,7119-angle>4000? 7119-angle:4000);
-			TIM_SetCompare3(TIM2,4000+angle<7119? 4000+angle:7119);
-			TIM_SetCompare4(TIM2,0);
+			TIM_SetCompare2(TIM2,7119-time*20);
+			TIM_SetCompare3(TIM2,7119-time*20);
+			TIM_SetCompare4(TIM2,7119-time*20);
 		}
 		else
 			time++;
@@ -239,9 +239,16 @@ void pwm_init(void)
 	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
  	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
 	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
+	TIM_OCInitStructure.TIM_Pulse=0;
+	
 	TIM_OC2Init(TIM2, &TIM_OCInitStructure);
-
 	TIM_OC2PreloadConfig(TIM2, TIM_OCPreload_Enable);
+	
+	TIM_OC3Init(TIM2, &TIM_OCInitStructure);
+	TIM_OC3PreloadConfig(TIM2, TIM_OCPreload_Enable);
+	
+	TIM_OC4Init(TIM2, &TIM_OCInitStructure);
+	TIM_OC4PreloadConfig(TIM2, TIM_OCPreload_Enable);
  
 	TIM_Cmd(TIM2, ENABLE);
 }

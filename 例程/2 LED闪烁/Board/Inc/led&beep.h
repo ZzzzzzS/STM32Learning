@@ -29,7 +29,7 @@ typedef enum
 }PowerState;
 
 
-extern void LEDInit(void);
+extern void LED_Init(void);
 extern void LEDPower(LEDNumber Number,PowerState State);
 extern void BeepInit(void);
 extern void BeepPower(PowerState State);

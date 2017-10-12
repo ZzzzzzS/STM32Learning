@@ -31,106 +31,85 @@ char KeyClicked(void)
 	GPIO_SetBits(GPIOD,GPIO_Pin_8); // 高
 	GPIO_ResetBits(GPIOD,GPIO_Pin_9);   //低
 	GPIO_ResetBits(GPIOB,GPIO_Pin_14|GPIO_Pin_15);
-	if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13)==0)
+	if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13)==1)
 	{ 
-	  if(GPIO_ReadOutputDataBit(GPIOD, GPIO_Pin_13)==0)//确定按键被按下
-		key=14;
+		key=13;
 	}
-	else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_12)==0)
+	else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_12)==1)
 	 {
-		
-	  if(GPIO_ReadOutputDataBit(GPIOD, GPIO_Pin_12)==0)//确定按键被按下
-		key=24;
+		key=23;
 	 }
-	else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_11)==0)
+	else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_11)==1)
 	{
-		
-	  if( GPIO_ReadOutputDataBit(GPIOD, GPIO_Pin_11)==0)//确定按键被按下
-		key=34;
+		key=33;
 	}
-	else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_10)==0)
+	else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_10)==1)
 	{
-   	if( GPIO_ReadOutputDataBit(GPIOD, GPIO_Pin_10)==0)//确定按键被按下
-		key=44;
+		key=43;
 	}
 	/*****操作第二列按键******/
-	GPIO_ResetBits(GPIOB,GPIO_Pin_15);            // 设置为低电平
-	GPIO_ResetBits(GPIOD,GPIO_Pin_9|GPIO_Pin_8);    // 设置为高电平
-	GPIO_SetBits(GPIOB,GPIO_Pin_14);               // 设置为高电平
-	if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13)==0)
+	GPIO_SetBits(GPIOD,GPIO_Pin_9); // 高
+	GPIO_ResetBits(GPIOD,GPIO_Pin_8);   //低
+	GPIO_ResetBits(GPIOB,GPIO_Pin_14|GPIO_Pin_15);
+	if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13)==1)
 	{
-	  if(GPIO_ReadOutputDataBit(GPIOD, GPIO_Pin_13)==0)//确定按键被按下
-		key=12;
+		key=14;
 	}
-	else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_12)==0)
+	else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_12)==1)
 	{
-  	if(GPIO_ReadOutputDataBit(GPIOD, GPIO_Pin_12)==0)//确定按键被按下
-		key=22;
+		key=24;
 	}
-	else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_11)==0)
+	else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_11)==1)
 	{
-	  if( GPIO_ReadOutputDataBit(GPIOD, GPIO_Pin_11)==0)//确定按键被按下
-		key=32;
+		key=34;
 	}
-	else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_10)==0)
+	else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_10)==1)
 	{
-   	if( GPIO_ReadOutputDataBit(GPIOD, GPIO_Pin_10)==0)//确定按键被按下
-		key=42;
+		key=44;
 	}
 
 	/******操作第三列按键******/
 	GPIO_ResetBits(GPIOD,GPIO_Pin_8);            // 设置为低电平
 	GPIO_ResetBits(GPIOD,GPIO_Pin_9);               // 设置为高电平
 	GPIO_SetBits(GPIOB,GPIO_Pin_14);       // 设置为高电平
-	GPIO_ResetBits(GPIOB,GPIO_Pin_14);            // 设置为低电平
-	if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13)==0)
+	GPIO_ResetBits(GPIOB,GPIO_Pin_15);            // 设置为低电平
+	if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13)==1)
 	{
-	  if(GPIO_ReadOutputDataBit(GPIOD, GPIO_Pin_13)==0)//确定按键被按下
-		key=13;
+		key=11;
 	}
-	else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_12)==0)
+	else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_12)==1)
 	{
-	  if(GPIO_ReadOutputDataBit(GPIOD, GPIO_Pin_12)==0)//确定按键被按下
-		key=23;
+		key=21;
 	}
-	else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_11)==0)
+	else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_11)==1)
 	{
-	  if( GPIO_ReadOutputDataBit(GPIOD, GPIO_Pin_11)==0)//确定按键被按下
-		key=33;
+		key=31;
 	}
- else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_10)==0)
+ else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_10)==1)
 	{
-   	if( GPIO_ReadOutputDataBit(GPIOD, GPIO_Pin_10)==0)//确定按键被按下
-		key=43;
+		key=41;
 	}
 		
    /*****操作第四列按键*****/
 	GPIO_ResetBits(GPIOD,GPIO_Pin_9); //设置为低电平
 	GPIO_ResetBits(GPIOD,GPIO_Pin_8);   //设置为高电平
-	GPIO_SetBits(GPIOB,GPIO_Pin_14);//设置为高电平
-	GPIO_ResetBits(GPIOD,GPIO_Pin_15);   //设置为高电平
-	if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13)==0)
+	GPIO_SetBits(GPIOB,GPIO_Pin_15);//设置为高电平
+	GPIO_ResetBits(GPIOB,GPIO_Pin_14);   //设置为高电平
+	if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13)==1)
 	{
-	  if(GPIO_ReadOutputDataBit(GPIOD, GPIO_Pin_13)==0)//确定按键被按下
-		key=14;
+		key=12;
 	}
-	else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_12)==0)
+	else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_12)==1)
 	 {
-		
-	  if(GPIO_ReadOutputDataBit(GPIOD, GPIO_Pin_12)==0)//确定按键被按下
-		key=24;
+		key=22;
 	 }
-	else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_11)==0)
+	else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_11)==1)
 	{
-		
-	  if( GPIO_ReadOutputDataBit(GPIOD, GPIO_Pin_11)==0)//确定按键被按下
-		key=34;
+		key=32;
 	}
-	else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_10)==0)
+	else if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_10)==1)
 	{
-	
-	  if( GPIO_ReadOutputDataBit(GPIOD, GPIO_Pin_10)==0)//确定按键被按下
-		key=44;
+		key=42;
 	}
 
 	return key;

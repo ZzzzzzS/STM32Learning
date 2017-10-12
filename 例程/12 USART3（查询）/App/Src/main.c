@@ -7,33 +7,21 @@
 *									建议大家多查阅数据手册，多在新生群和大家交流。
 
 *************************************************************/
-/*************************功能说明******************************
-通过串口与电脑进行通信
-什么是串口:
-https://baike.baidu.com/item/%E4%B8%B2%E8%A1%8C%E6%8E%A5%E5%8F%A3/2909564?fr=aladdin
-作用:
-利用串口实现电脑与单片机,单片机与单片机之间的通信,是一种简单的通信协议
-串口初始化步骤:
-打开管脚时钟和串口USART模块时钟(相当于总开关)->
-配置GPIO管脚->
-配置USART串口模块->
-使能串口
-*************************功能说明******************************/
 
 #include "include.h"
-#include <stdio.h>																			//使用printf函数需要包含标准库
+#include <stdio.h>//printf函数需要包含此头文件 并在配置选项中勾选use microlib
 //宏定义 总线时钟 GPIO时钟 波特率
-#define USART_CLK RCC_APB1Periph_USART3
-#define USART_GPIO_CLK RCC_APB2Periph_GPIOB
+#define USART_CLK RCC_APB2Periph_USART1
+#define USART_GPIO_CLK RCC_APB2Periph_GPIOA
 #define USART_BAUDRATE 115200
-#define USARTx USART3
-#define USARTx_APBxClkCmd RCC_APB1PeriphClockCmd
+#define USARTx USART1
+#define USARTx_APBxClkCmd RCC_APB2PeriphClockCmd
 
 //USART GPIO管脚宏定义
-#define USART_TX_GPIO_PORT GPIOB
-#define USART_TX_GPIO_PIN GPIO_Pin_10
-#define USART_RX_GPIO_PORT GPIOB
-#define USART_RX_GPIO_PIN GPIO_Pin_11
+#define USART_TX_GPIO_PORT GPIOA
+#define USART_TX_GPIO_PIN GPIO_Pin_9
+#define USART_RX_GPIO_PORT GPIOA
+#define USART_RX_GPIO_PIN GPIO_Pin_10
 
 void USART_Config(void);
 void Usart_SendByte( USART_TypeDef * pUSARTx, uint8_t ch);
