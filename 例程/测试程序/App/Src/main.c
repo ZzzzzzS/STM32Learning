@@ -1,14 +1,15 @@
-/**********************718´´ÐÂÊµÑéÊÒ¿ª·¢°åÀý³Ì*********************
+/**********************718ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½Ò¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*********************
 
-*  ×÷Õß:718´´ÐÂÊµÑéÊÒ
-*  ¿ª·¢°å:STM32F103VET6 718´´ÐÂÊµÑéÊÒ¿ª·¢°å
-*  ÉùÃ÷:ÓÉÓÚ×÷ÕßË®Æ½ÓÐÏÞ,²»ÄÜÍêÃÀ,ÈôÔÚÊ¹ÓÃ¹ý³ÌÖÐ·¢ÏÖÎÊÌâ»¶Ó­Ìá³öÖ¸Õý
+*  ï¿½ï¿½ï¿½ï¿½:718ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½
+*  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:STM32F103VET6 718ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½Ò¿ï¿½ï¿½ï¿½ï¿½ï¿½
+*  ï¿½ï¿½ï¿½ï¿½:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë®Æ½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã¹ï¿½ï¿½ï¿½ï¿½Ð·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â»¶Ó­ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
 *		
 ******************************************************************/
 #include "stm32f10x_it.h"
 #include "MPU6050.h"
 #include "iic.h"
 #include "module_74hc595.h"
+#include "math.h"
 
 void tim_init(void);
 void showSomethings(int data);
@@ -19,6 +20,7 @@ void bee_init(void);
 void bee_on(void);
 void bee_off(void);
 void pwm_init(void);
+float angle_cal(void);
 
 unsigned int time=0;
 unsigned int time_led=0;
@@ -29,19 +31,19 @@ uint16_t led_group[4]={GPIO_Pin_6,GPIO_Pin_7,GPIO_Pin_8,GPIO_Pin_9};
 
 int main()
 {
-  //³õÊ¼»¯6050ºÍIICÉèÖÃ
+  //ï¿½ï¿½Ê¼ï¿½ï¿½6050ï¿½ï¿½IICï¿½ï¿½ï¿½ï¿½
 	Sys_Configuration();
-	//³õÊ¼»¯6050
+	//ï¿½ï¿½Ê¼ï¿½ï¿½6050
 	hc595_init();
 	tim_init();
 	LED_Init();
 	button_init();
 	bee_init();
 	pwm_init();
+	
 	while(1)
 	{
 		showSomethings(angle);
-		
 		
 		if(GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_12)==0)
 		{
@@ -94,12 +96,12 @@ void  TIM6_IRQHandler (void)
 	{
 		if(time>200)
 		{
-			angle=getAccY()/16384;
+			angle=(int)angle_cal();
 			time=0;
 			//All color led
-			TIM_SetCompare2(TIM2,7119-time*20);
-			TIM_SetCompare3(TIM2,7119-time*20);
-			TIM_SetCompare4(TIM2,7119-time*20);
+			TIM_SetCompare2(TIM2,2000);
+			TIM_SetCompare3(TIM2,7119-angle*10<0? 0:7119-angle*10);
+			TIM_SetCompare4(TIM2,2000);
 		}
 		else
 			time++;
@@ -123,7 +125,7 @@ void showSomethings(int data)
 {
 		int i=0;
 	  int  temp;
- 		//ÒÀ´ÎÏÔÊ¾Ã¿¸öÎ»
+ 		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Ã¿ï¿½ï¿½Î»
 		if(data<0)
 			data=-data;
 		while(data/10!=0)
@@ -239,17 +241,28 @@ void pwm_init(void)
 	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
  	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
 	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
-	TIM_OCInitStructure.TIM_Pulse=0;
-	
+	TIM_OCInitStructure.Pulse=0;
+
 	TIM_OC2Init(TIM2, &TIM_OCInitStructure);
 	TIM_OC2PreloadConfig(TIM2, TIM_OCPreload_Enable);
-	
+
 	TIM_OC3Init(TIM2, &TIM_OCInitStructure);
 	TIM_OC3PreloadConfig(TIM2, TIM_OCPreload_Enable);
-	
+
 	TIM_OC4Init(TIM2, &TIM_OCInitStructure);
 	TIM_OC4PreloadConfig(TIM2, TIM_OCPreload_Enable);
  
 	TIM_Cmd(TIM2, ENABLE);
 }
 
+float angle_cal(void)
+{
+	float x,y,z,temp;
+	x=((float)getAccX())/16384;
+	y=((float)getAccY())/16384;
+	z=((float)getAccZ())/16384;
+	temp=sqrt(x*x+y*y)/z;
+	temp=atan(temp);
+	
+	return temp*180/3.14;
+}
