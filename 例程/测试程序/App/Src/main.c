@@ -100,7 +100,7 @@ void  TIM6_IRQHandler (void)
 			time=0;
 			//All color led
 			TIM_SetCompare2(TIM2,2000);
-			TIM_SetCompare3(TIM2,7119-angle*10<0? 0:7119-angle*10);
+			TIM_SetCompare3(TIM2,(7119-(angle>0? angle:0)*10)<0? 0:7119-angle*10);
 			TIM_SetCompare4(TIM2,2000);
 		}
 		else
