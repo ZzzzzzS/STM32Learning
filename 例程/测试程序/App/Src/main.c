@@ -35,6 +35,82 @@ int main()
 	Sys_Configuration();
 	//��ʼ��6050
 	hc595_init();
+		DisplayScan(0,data_table[1]);		//ÏÔÊ¾Ê±¼ä
+		DisplayScan(1,data_table[2]);
+	
+	
+	
+		DisplayScan(2,data_table[3]);
+		DisplayScan(3,data_table[4]);
+		DisplayScan(4,data_table[5]);
+		DisplayScan(5,data_table[6]);
+		DisplayScan(6,data_table[7]);
+		DisplayScan(7,data_table[8]);
+	DisplayScan(0,data_table[1]);		//ÏÔÊ¾Ê±¼ä
+		DisplayScan(1,data_table[2]);
+		DisplayScan(2,data_table[3]);
+		DisplayScan(3,data_table[4]);
+		DisplayScan(4,data_table[5]);
+		DisplayScan(5,data_table[6]);
+		DisplayScan(6,data_table[7]);
+		DisplayScan(7,data_table[8]);
+	DisplayScan(0,data_table[1]);		//ÏÔÊ¾Ê±¼ä
+		DisplayScan(1,data_table[2]);
+		DisplayScan(2,data_table[3]);
+		DisplayScan(3,data_table[4]);
+		DisplayScan(4,data_table[5]);
+		DisplayScan(5,data_table[6]);
+		DisplayScan(6,data_table[7]);
+		DisplayScan(7,data_table[8]);
+		DisplayScan(0,data_table[1]);		//ÏÔÊ¾Ê±¼ä
+		DisplayScan(1,data_table[2]);
+		DisplayScan(2,data_table[3]);
+		DisplayScan(3,data_table[4]);
+		DisplayScan(4,data_table[5]);
+		DisplayScan(5,data_table[6]);
+		DisplayScan(6,data_table[7]);
+		DisplayScan(7,data_table[8]);
+		DisplayScan(0,data_table[1]);		//ÏÔÊ¾Ê±¼ä
+		DisplayScan(1,data_table[2]);
+		DisplayScan(2,data_table[3]);
+		DisplayScan(3,data_table[4]);
+		DisplayScan(4,data_table[5]);
+		DisplayScan(5,data_table[6]);
+		DisplayScan(6,data_table[7]);
+		DisplayScan(7,data_table[8]);
+		DisplayScan(0,data_table[1]);		//ÏÔÊ¾Ê±¼ä
+		DisplayScan(1,data_table[2]);
+		DisplayScan(2,data_table[3]);
+		DisplayScan(3,data_table[4]);
+		DisplayScan(4,data_table[5]);
+		DisplayScan(5,data_table[6]);
+		DisplayScan(6,data_table[7]);
+		DisplayScan(7,data_table[8]);
+		DisplayScan(0,data_table[1]);		//ÏÔÊ¾Ê±¼ä
+		DisplayScan(1,data_table[2]);
+		DisplayScan(2,data_table[3]);
+		DisplayScan(3,data_table[4]);
+		DisplayScan(4,data_table[5]);
+		DisplayScan(5,data_table[6]);
+		DisplayScan(6,data_table[7]);
+		DisplayScan(7,data_table[8]);
+		DisplayScan(0,data_table[1]);		//ÏÔÊ¾Ê±¼ä
+		DisplayScan(1,data_table[2]);
+		DisplayScan(2,data_table[3]);
+		DisplayScan(3,data_table[4]);
+		DisplayScan(4,data_table[5]);
+		DisplayScan(5,data_table[6]);
+		DisplayScan(6,data_table[7]);
+		DisplayScan(7,data_table[8]);
+		DisplayScan(0,data_table[1]);		//ÏÔÊ¾Ê±¼ä
+		DisplayScan(1,data_table[2]);
+		DisplayScan(2,data_table[3]);
+		DisplayScan(3,data_table[4]);
+		DisplayScan(4,data_table[5]);
+		DisplayScan(5,data_table[6]);
+		DisplayScan(6,data_table[7]);
+		DisplayScan(7,data_table[8]);
+		
 	tim_init();
 	LED_Init();
 	button_init();
