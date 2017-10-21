@@ -456,11 +456,6 @@
           <GroupName>Chip</GroupName>
           <Files>
             <File>
-              <FileName>core_cm3.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Chip\Src\core_cm3.c</FilePath>
-            </File>
-            <File>
               <FileName>startup_stm32f10x_hd.s</FileName>
               <FileType>2</FileType>
               <FilePath>.\Chip\Src\startup_stm32f10x_hd.s</FilePath>
