@@ -9,7 +9,7 @@
 void Delay_us(u32 nus)					
 {
 	u32 temp;
-	SysTick->LOAD=(u32)nus*1; 					 	/*时间加载（LOAD为重装数值寄存器)*/
+	SysTick->LOAD=(u32)nus*9; 					 	/*时间加载（LOAD为重装数值寄存器)*/
 	SysTick->VAL =0x00; 							/*清空计数器(VAL为当前数值寄存器)*/
 	SysTick->CTRL|=0x01;							/*开始对CTRL使能，并使为0时产生systick异常请求，无动作*/
 	do
