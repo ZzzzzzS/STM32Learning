@@ -54,7 +54,7 @@ int main()
 	{
 
 		LED_GPIO_Config();												//初始化LED灯
-    BASIC_TIM_Init();													//初始化定时器
+    	BASIC_TIM_Init();													//初始化定时器
 		led_on();																	//先打开灯
 		while(1)
 		{
@@ -67,7 +67,6 @@ int main()
 				time=0;
 				led_on();
 			}
-
 		}
 	}
 
