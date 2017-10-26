@@ -70,7 +70,7 @@ char KeyClicked(void)
 
 	/******操作第三列按键******/
 	GPIO_ResetBits(GPIOD,GPIO_Pin_8);            // 设置为低电平
-	GPIO_ResetBits(GPIOD,GPIO_Pin_9);               // 设置为高电平
+	GPIO_ResetBits(GPIOD,GPIO_Pin_9);               // 设置为低电平
 	GPIO_SetBits(GPIOB,GPIO_Pin_14);       // 设置为高电平
 	GPIO_ResetBits(GPIOB,GPIO_Pin_15);            // 设置为低电平
 	if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13)==1)
@@ -92,9 +92,9 @@ char KeyClicked(void)
 		
    /*****操作第四列按键*****/
 	GPIO_ResetBits(GPIOD,GPIO_Pin_9); //设置为低电平
-	GPIO_ResetBits(GPIOD,GPIO_Pin_8);   //设置为高电平
+	GPIO_ResetBits(GPIOD,GPIO_Pin_8);   //设置为低电平
 	GPIO_SetBits(GPIOB,GPIO_Pin_15);//设置为高电平
-	GPIO_ResetBits(GPIOB,GPIO_Pin_14);   //设置为高电平
+	GPIO_ResetBits(GPIOB,GPIO_Pin_14);   //设置为低电平
 	if(GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_13)==1)
 	{
 		key=12;
