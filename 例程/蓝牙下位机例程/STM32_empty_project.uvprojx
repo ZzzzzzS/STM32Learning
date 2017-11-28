@@ -18,11 +18,11 @@
           <Vendor>STMicroelectronics</Vendor>
           <PackID>Keil.STM32F1xx_DFP.2.2.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
-          <Cpu>IRAM(0x20000000,0x10000) IROM(0x08000000,0x80000) CPUTYPE("Cortex-M3") CLOCK(12000000) ELITTLE</Cpu>
+          <Cpu>IROM(0x08000000,0x80000) IRAM(0x20000000,0x10000) CPUTYPE("Cortex-M3") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
           <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0STM32F10x_512 -FS08000000 -FL080000 -FP0($$Device:STM32F103VE$Flash\STM32F10x_512.FLM))</FlashDriverDll>
-          <DeviceId>4225</DeviceId>
+          <DeviceId>0</DeviceId>
           <RegisterFile>$$Device:STM32F103VE$Device\Include\stm32f10x.h</RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
@@ -49,7 +49,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Objects\</OutputDirectory>
-          <OutputName>STM32_empty_project</OutputName>
+          <OutputName>USART1（接发）</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -110,7 +110,7 @@
         </CommonProperty>
         <DllOption>
           <SimDllName>SARMCM3.DLL</SimDllName>
-          <SimDllArguments>-REMAP</SimDllArguments>
+          <SimDllArguments> -REMAP</SimDllArguments>
           <SimDlgDll>DCM.DLL</SimDlgDll>
           <SimDlgDllArguments>-pCM3</SimDlgDllArguments>
           <TargetDllName>SARMCM3.DLL</TargetDllName>
@@ -138,7 +138,7 @@
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3>"" ()</Flash3>
+          <Flash3></Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -334,7 +334,7 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>STM32F10X_HD,USE_STDPERIPH_DRIVER</Define>
+              <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
               <IncludePath>.\App\Inc;.\Board\Inc;.\Chip\Inc;.\Lib\Inc;.\App;.\Board;.\Chip;.\Lib</IncludePath>
             </VariousControls>
@@ -396,69 +396,27 @@
               <FilePath>.\App\Src\system_stm32f10x.c</FilePath>
             </File>
             <File>
-              <FileName>TIM.c</FileName>
+              <FileName>SerialPortImformation.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\App\TIM.c</FilePath>
+              <FilePath>.\App\SerialPortImformation.c</FilePath>
+            </File>
+            <File>
+              <FileName>SerialPortImformation.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\App\SerialPortImformation.h</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Board</GroupName>
-          <Files>
-            <File>
-              <FileName>systick.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Board\Src\systick.c</FilePath>
-            </File>
-            <File>
-              <FileName>Spi-OLED.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Board\Src\Spi-OLED.c</FilePath>
-            </File>
-            <File>
-              <FileName>rtc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Board\Src\rtc.c</FilePath>
-            </File>
-            <File>
-              <FileName>MPU6050.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Board\Src\MPU6050.c</FilePath>
-            </File>
-            <File>
-              <FileName>module_74hc595.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Board\Src\module_74hc595.c</FilePath>
-            </File>
-            <File>
-              <FileName>MatrixKeyboard.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Board\Src\MatrixKeyboard.c</FilePath>
-            </File>
-            <File>
-              <FileName>led&amp;beep.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Board\Src\led&amp;beep.c</FilePath>
-            </File>
-            <File>
-              <FileName>iic.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Board\Src\iic.c</FilePath>
-            </File>
-            <File>
-              <FileName>adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Board\Src\adc.c</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>Chip</GroupName>
           <Files>
             <File>
-              <FileName>startup_stm32f10x_hd.s</FileName>
+              <FileName>startup_stm32f10x_ld.s</FileName>
               <FileType>2</FileType>
-              <FilePath>.\Chip\Src\startup_stm32f10x_hd.s</FilePath>
+              <FilePath>.\Chip\Src\startup_stm32f10x_ld.s</FilePath>
             </File>
           </Files>
         </Group>
